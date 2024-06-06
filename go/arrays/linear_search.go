@@ -31,7 +31,7 @@ func BinarySearch(orderedList []int, value int) int {
     for low < high {
         needle := (low + high) / 2
         if value > orderedList[needle] {
-            low = needle + 1 
+            low = needle + 1
         }
         if value < orderedList[needle] {
             high = needle
