@@ -1,6 +1,7 @@
 package tests
 
 import (
+    "reflect"
     "testing"
     "kata-dojo/go/arrays"
 )
@@ -14,6 +15,11 @@ type SearchTestCase struct {
 type CrystalTestCase struct {
     storeys        []bool
     expectedStorey int
+}
+
+type BubbleTestCase struct {
+    arr         []int
+    expectedArr []int
 }
 
 var indexOfTestCases = []SearchTestCase {
@@ -43,6 +49,13 @@ var crystalProblemTestCases = []CrystalTestCase {
     {storeys: []bool{false, false, false, false, true}, expectedStorey: 4},
 }
 
+var bubbleTestCases = []BubbleTestCase {
+    {arr: []int{1, 2, 3, 4, 5}, expectedArr: []int{1, 2, 3, 4, 5}},
+    {arr: []int{5, 4, 3, 2, 1}, expectedArr: []int{1, 2, 3, 4, 5}},
+    {arr: []int{3, 1, 4, 5, 2}, expectedArr: []int{1, 2, 3, 4, 5}},
+    {arr: []int{1}, expectedArr: []int{1}},
+    {arr: []int{3, 3, 1, 2, 2}, expectedArr: []int{1, 2, 2, 3, 3}},
+}
 
 func TestIndexOf(t *testing.T) {
     for _, value := range indexOfTestCases {
@@ -82,6 +95,16 @@ func TestCrystalProblem(t *testing.T) {
 
         if output != value.expectedStorey {
             t.Errorf("CrystalProblem(%v) = %d; want %d", value.storeys, output, value.expectedStorey)
+        }
+    }
+}
+
+func TestBubble(t *testing.T) {
+    for _, value := range bubbleTestCases {
+        output := arrays.Bubble(value.arr)
+
+        if !reflect.DeepEqual(output, value.expectedArr) {
+            t.Errorf("Bubble (%v) = %v", value.arr, value.expectedArr)
         }
     }
 }
