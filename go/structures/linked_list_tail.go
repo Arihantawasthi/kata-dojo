@@ -22,11 +22,7 @@ func (ll *LinkedListTail) Insert(data int) {
         ll.tail = newNode
         return
     }
-    current := ll.head
-    for current.next != nil {
-        current = current.next
-    }
-    current.next = newNode
+    ll.tail.next = newNode
     ll.tail = newNode
 }
 

@@ -126,8 +126,8 @@ func TestLinkedListTail(t *testing.T) {
     ll.Insert(5)
     ll.Insert(8)
     ll.Insert(10)
+    ll.Insert(15)
     ll.Insert(11)
-    ll.Delete(11)
-    ll.Delete(10)
+    ll.Delete(5)
     ll.Display()
 }
