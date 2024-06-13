@@ -1,9 +1,11 @@
 package tests
 
 import (
-    "reflect"
-    "testing"
-    "kata-dojo/go/arrays"
+	"fmt"
+	"kata-dojo/go/arrays"
+	"kata-dojo/go/structures"
+	"reflect"
+	"testing"
 )
 
 type SearchTestCase struct {
@@ -107,4 +109,25 @@ func TestBubble(t *testing.T) {
             t.Errorf("Bubble (%v) = %v", value.arr, value.expectedArr)
         }
     }
+}
+
+func TestLinkedList(t *testing.T) {
+    fmt.Println("Printing Linked List")
+    ll := &structures.LinkedList{}
+    ll.Insert(5)
+    ll.Insert(8)
+    ll.Delete(8)
+    ll.Display()
+}
+
+func TestLinkedListTail(t *testing.T) {
+    fmt.Println("Printing Linked List Tail")
+    ll := &structures.LinkedListTail{}
+    ll.Insert(5)
+    ll.Insert(8)
+    ll.Insert(10)
+    ll.Insert(11)
+    ll.Delete(11)
+    ll.Delete(10)
+    ll.Display()
 }
