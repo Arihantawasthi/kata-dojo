@@ -143,3 +143,15 @@ func TestQueue(t *testing.T) {
     q.Pop()
     q.Display()
 }
+
+
+func TestStack(t *testing.T) {
+    fmt.Println("Printing Stack")
+    s := &structures.Stack{}
+    s.Push(5)
+    s.Push(6)
+    s.Push(7)
+    s.Push(8)
+    s.Pop()
+    s.Display()
+}
