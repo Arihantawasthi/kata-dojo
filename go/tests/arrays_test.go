@@ -155,3 +155,9 @@ func TestStack(t *testing.T) {
     s.Pop()
     s.Display()
 }
+
+
+func TestHeap(t *testing.T) {
+    structures.TraverseHeap([]int{4, 2, 6, 1, 5, 3})
+    structures.Heapify([]int{4, 2, 6, 1, 5, 3})
+}
