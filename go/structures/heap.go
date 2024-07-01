@@ -1,67 +1,50 @@
 package structures
 
-import "fmt"
+//import "fmt"
 
 
-func TraverseHeap(arr []int) {
-    length := len(arr)
-    for i := length / 2; i > 0; i-- {
-        left := 2 * i
-        right := (2 * i) + 1
-
-        if right - 1 >= length {
-            right = length - 1
-        }
-        fmt.Printf("Parent: %d; Left: %d and Right: %d\n", arr[i-1], arr[left-1], arr[right-1])
-    }
+type MinHeap struct {
+    Data []int
 }
 
 
-func Heapify(arr []int) {
-    length := len(arr)
-
+func Heapify(arr []int) *MinHeap {
+    h := &MinHeap{Data: arr}
+    length := len(h.Data)
     for i := length / 2; i > 0; i-- {
-        buildMaxHeap(arr, length, i)
+        builMinHeap(h.Data, length, i)
     }
-    fmt.Println(arr)
+
+    return h
 }
 
-
-func buildMinHeap(arr []int, length, i int) {
-    minIndex := i
+func builMinHeap(arr []int , length, i int) {
+    parent := i
     left := 2 * i
     right := (2 * i) + 1
 
-    if left <= length && arr[left - 1] < arr[minIndex - 1] {
-        minIndex = left
+    if left <= length && arr[left - 1] < arr[parent - 1] {
+        parent = left
     }
 
-    if right <= length && arr[right - 1] < arr[minIndex - 1] {
-        minIndex = right
+    if right <= length && arr[right - 1] < arr[parent - 1]  {
+        parent = right
     }
 
-    if minIndex != i {
-        arr[i - 1], arr[minIndex - 1] = arr[minIndex - 1], arr[i - 1]
-        buildMinHeap(arr, length, minIndex)
+    if parent != i {
+        arr[i - 1], arr[parent - 1] = arr[parent - 1], arr[i - 1]
+        builMinHeap(arr, length, parent)
     }
 }
 
 
-func buildMaxHeap(arr []int, length, i int) {
-    maxIndex := i
-    left := 2 * i
-    right := (2 * i) + 1
+func (h *MinHeap) ExtractMin() int {
+    min := h.Data[0]
+    h.Data[0] = h.Data[len(h.Data) - 1]
+    h.Data = h.Data[:len(h.Data) - 1]
+    return min
+}
 
-    if left <= length && arr[left - 1] > arr[maxIndex - 1] {
-        maxIndex = left
-    }
 
-    if right <= length && arr[right - 1] > arr[maxIndex - 1] {
-        maxIndex = right
-    }
-
-    if maxIndex != i {
-        arr[i - 1], arr[maxIndex - 1] = arr[maxIndex - 1], arr[i - 1]
-        buildMaxHeap(arr, length, maxIndex)
-    }
+func (h *MinHeap) ShiftDown(idx int) {
 }

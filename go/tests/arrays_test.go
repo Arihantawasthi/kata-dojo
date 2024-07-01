@@ -158,6 +158,7 @@ func TestStack(t *testing.T) {
 
 
 func TestHeap(t *testing.T) {
-    structures.TraverseHeap([]int{4, 2, 6, 1, 5, 3})
-    structures.Heapify([]int{4, 2, 6, 1, 5, 3})
+    minHeap := structures.Heapify([]int{4, 2, 6, 1, 5, 3})
+    extracted := minHeap.ExtractMin()
+    fmt.Println(minHeap.Data, extracted)
 }
