@@ -135,12 +135,13 @@ func TestLinkedListTail(t *testing.T) {
 func TestQueue(t *testing.T) {
     fmt.Println("Printing Queue")
     q := &structures.Queue{}
+    q.Init()
     q.Enqueue(5)
     q.Enqueue(6)
     q.Enqueue(7)
     q.Enqueue(8)
-    q.Enqueue(9)
-    q.Pop()
+    q.Display()
+    q.Deque()
     q.Display()
 }
 
