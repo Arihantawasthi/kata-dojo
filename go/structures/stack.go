@@ -2,46 +2,46 @@ package structures
 
 import "fmt"
 
+// import "fmt"
+
 type Stack struct {
-    bottom *Node
+    top    *Node
+    length int
 }
 
 
-func (s *Stack) Push(data int) {
-    newNode := &Node{
-        value: data,
-        next: nil,
-    }
+func (s *Stack) Init() {
+    s.top = nil
+    s.length = 0
+}
 
-    if s.bottom == nil {
-        s.bottom = newNode
+func (s *Stack) Push(val int) {
+    node := &Node{value: val}
+    s.length++
+    if s.top == nil {
+        s.top = node
         return
     }
 
-    current := s.bottom
-    for current.next != nil {
-        current = current.next
-    }
-    current.next = newNode
+    node.next = s.top
+    s.top = node
 }
-
 
 func (s *Stack) Pop() {
-    if s.bottom == nil {
+    if s.top == nil {
         return
     }
 
-    current := s.bottom
-    for current.next != nil {
-        current = current.next
-    }
+    s.length--
+    s.top = s.top.next
 }
 
 
 func (s *Stack) Display() {
-    current := s.bottom
+    current := s.top
     for current != nil {
         fmt.Printf("%d -> ", current.value)
         current = current.next
     }
+    fmt.Println()
 }

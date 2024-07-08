@@ -15,7 +15,6 @@ func (q *Queue) Init() {
     q.length = 0
 }
 
-
 func (q *Queue) Enqueue(val int) {
     node := &Node{value: val}
     q.length++
@@ -29,7 +28,6 @@ func (q *Queue) Enqueue(val int) {
     q.tail = node
 }
 
-
 func (q *Queue) Deque() {
     if q.head == nil {
         return
@@ -38,7 +36,6 @@ func (q *Queue) Deque() {
     next := q.head.next
     q.head = next
 }
-
 
 func (q *Queue) Display() {
     current := q.head
