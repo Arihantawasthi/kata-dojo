@@ -42,9 +42,6 @@ func (h *MinHeap) ExtractMin() int {
     min := h.Data[0]
     h.Data[0] = h.Data[len(h.Data) - 1]
     h.Data = h.Data[:len(h.Data) - 1]
+    Heapify(h.Data)
     return min
-}
-
-
-func (h *MinHeap) ShiftDown(idx int) {
 }

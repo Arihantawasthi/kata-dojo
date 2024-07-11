@@ -2,8 +2,6 @@ package structures
 
 import "fmt"
 
-// import "fmt"
-
 type Stack struct {
     top    *Node
     length int
