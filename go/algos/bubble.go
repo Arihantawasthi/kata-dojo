@@ -1,5 +1,4 @@
-package arrays
-
+package algos
 
 func Bubble(arr []int) []int {
     for i := 0; i < len(arr); i++ {
